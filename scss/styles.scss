@@ -1,6 +1,9 @@
 // colors //
-$color-black: #333;
+$color-black: #3C3530;
 $color-white: #FFF;
+$color-green: #AACD6E;
+$color-grey: #C5C6B6;
+$color-pink: #F16B6F;
 
 // font-weight //
 $font-weight-light: 300;
@@ -11,12 +14,13 @@ $font-weight-bold: 500;
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
 
 body {
   font-size: 16px;
-  background-color: $color-black;
-  color: $color-white;
+  background-color: $color-grey;
+  color: $color-black;
   font-family: 'Montserrat', sans-serif;
   font-weight: $font-weight-light;
 }
@@ -24,7 +28,8 @@ body {
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 4em 0;
+  padding: 4em 4%;
+  position: relative;
 }
 
 h1 {
@@ -36,4 +41,95 @@ h3 {
 	font-size: .9em;
 	text-align: center;
 	font-weight: $font-weight-light;
+}
+
+.category-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 4em;
+  opacity: 1;
+  transition: opacity .5s;
+
+  &.fadeOut {
+    opacity: 0;
+  }
+
+  div {
+    font-size: 1.5em;
+    margin-right: 1.5em;
+  }
+
+  ul {
+    display: flex;
+    margin-top: 1em;
+
+    li {
+      background-color: $color-pink;
+      color: $color-white;
+      padding: .6em;
+      margin: .5em .5em;
+      text-align: center;
+      cursor: pointer;
+      transition: all .17s;
+
+      &:hover {
+        transform: scale(1.04);
+      }
+    }
+  }
+}
+
+.playing-field {
+  display: block;
+
+  .guesses-remaining-wrapper {
+    margin-bottom: 1em;
+  }
+
+  .letters-wrapper-outer {
+    display: flex;
+    justify-content: center;
+
+    .letters-wrapper-inner {
+      display: flex;
+
+      span {
+        font-size: 1.2em;
+        margin: .5em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background-color: $color-pink;
+        color: $color-white;
+        transition: all .17s;
+
+        &:nth-child(even):hover {
+          transform: rotate(7deg);
+        }
+
+        &:nth-child(odd):hover {
+          transform: rotate(-7deg);
+        }
+      }
+    }
+  }
+
+  button {
+    font-size: 1.2em;
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    transform: translateX(50%);
+    font-weight: $font-weight-light;
+    background-color: $color-pink;
+    color: $color-white;
+    border: 0;
+    padding: .6em 2em;
+    cursor: pointer;
+    outline: 0;
+  }
 }

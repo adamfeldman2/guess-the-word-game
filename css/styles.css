@@ -1,19 +1,21 @@
 * {
   list-style: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  flex-wrap: wrap; }
 
 body {
   font-size: 16px;
-  background-color: #333;
-  color: #FFF;
+  background-color: #C5C6B6;
+  color: #3C3530;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300; }
 
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 4em 0; }
+  padding: 4em 4%;
+  position: relative; }
 
 h1 {
   font-size: 2.7em;
@@ -23,3 +25,68 @@ h3 {
   font-size: .9em;
   text-align: center;
   font-weight: 300; }
+
+.category-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 4em;
+  opacity: 1;
+  transition: opacity .5s; }
+  .category-wrapper.fadeOut {
+    opacity: 0; }
+  .category-wrapper div {
+    font-size: 1.5em;
+    margin-right: 1.5em; }
+  .category-wrapper ul {
+    display: flex;
+    margin-top: 1em; }
+    .category-wrapper ul li {
+      background-color: #F16B6F;
+      color: #FFF;
+      padding: .6em;
+      margin: .5em .5em;
+      text-align: center;
+      cursor: pointer;
+      transition: all .17s; }
+      .category-wrapper ul li:hover {
+        transform: scale(1.04); }
+
+.playing-field {
+  display: block; }
+  .playing-field .guesses-remaining-wrapper {
+    margin-bottom: 1em; }
+  .playing-field .letters-wrapper-outer {
+    display: flex;
+    justify-content: center; }
+    .playing-field .letters-wrapper-outer .letters-wrapper-inner {
+      display: flex; }
+      .playing-field .letters-wrapper-outer .letters-wrapper-inner span {
+        font-size: 1.2em;
+        margin: .5em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background-color: #F16B6F;
+        color: #FFF;
+        transition: all .17s; }
+        .playing-field .letters-wrapper-outer .letters-wrapper-inner span:nth-child(even):hover {
+          transform: rotate(7deg); }
+        .playing-field .letters-wrapper-outer .letters-wrapper-inner span:nth-child(odd):hover {
+          transform: rotate(-7deg); }
+  .playing-field button {
+    font-size: 1.2em;
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    transform: translateX(50%);
+    font-weight: 300;
+    background-color: #F16B6F;
+    color: #FFF;
+    border: 0;
+    padding: .6em 2em;
+    cursor: pointer;
+    outline: 0; }
