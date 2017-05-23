@@ -33,12 +33,12 @@ body {
 }
 
 h1 {
-	font-size: 2.7em;
+	font-size: 2.5em;
 	text-align: center;
 }
 
 h3 {
-	font-size: .9em;
+	font-size: .85em;
 	text-align: center;
 	font-weight: $font-weight-light;
 }
@@ -89,19 +89,16 @@ h3 {
   	opacity: 1;
   }
 
-  .guesses-remaining-wrapper {
-    margin-bottom: 1em;
-  }
-
   .letters-wrapper-outer {
     display: flex;
     justify-content: center;
+    margin-top: 3em;
 
     .letters-wrapper-inner {
       display: flex;
 
       span {
-        font-size: 1.2em;
+        font-size: 1em;
         margin: .5em;
         cursor: pointer;
         display: flex;
@@ -122,6 +119,44 @@ h3 {
         }
       }
     }
+  }
+
+  .lines-for-letters-wrapper {
+  	display: flex;
+  	justify-content: center;
+  	margin: 2em 0 1em;
+
+  	div {
+  		display: inline-flex;
+	    border-bottom: 1px solid #3C3530;
+	    margin: 1em;
+	    width: 35px;
+	    height: 35px;
+	    justify-content: center;
+	    align-items: center;
+
+	    &:empty {
+	    	border: 0;
+	    	display: block;
+	    	width: 100%;
+    		margin: -2em;
+	    }
+
+  		span {
+  			font-size: 1.6em;
+				text-transform: uppercase;
+				opacity: 1;
+				transition: opacity .5s;
+
+				&.fadeIn {
+					opacity: 1;
+				}
+  		}
+  	}
+  }
+
+  .guesses-remaining-wrapper {
+    margin-bottom: 1em;
   }
 
   button {

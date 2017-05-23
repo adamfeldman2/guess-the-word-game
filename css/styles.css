@@ -18,11 +18,11 @@ body {
   position: relative; }
 
 h1 {
-  font-size: 2.7em;
+  font-size: 2.5em;
   text-align: center; }
 
 h3 {
-  font-size: .9em;
+  font-size: .85em;
   text-align: center;
   font-weight: 300; }
 
@@ -58,15 +58,14 @@ h3 {
   transition: opacity .5s; }
   .playing-field.fadeIn {
     opacity: 1; }
-  .playing-field .guesses-remaining-wrapper {
-    margin-bottom: 1em; }
   .playing-field .letters-wrapper-outer {
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    margin-top: 3em; }
     .playing-field .letters-wrapper-outer .letters-wrapper-inner {
       display: flex; }
       .playing-field .letters-wrapper-outer .letters-wrapper-inner span {
-        font-size: 1.2em;
+        font-size: 1em;
         margin: .5em;
         cursor: pointer;
         display: flex;
@@ -81,6 +80,32 @@ h3 {
           transform: rotate(7deg); }
         .playing-field .letters-wrapper-outer .letters-wrapper-inner span:nth-child(odd):hover {
           transform: rotate(-7deg); }
+  .playing-field .lines-for-letters-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 1em; }
+    .playing-field .lines-for-letters-wrapper div {
+      display: inline-flex;
+      border-bottom: 1px solid #3C3530;
+      margin: 1em;
+      width: 35px;
+      height: 35px;
+      justify-content: center;
+      align-items: center; }
+      .playing-field .lines-for-letters-wrapper div:empty {
+        border: 0;
+        display: block;
+        width: 100%;
+        margin: -2em; }
+      .playing-field .lines-for-letters-wrapper div span {
+        font-size: 1.6em;
+        text-transform: uppercase;
+        opacity: 1;
+        transition: opacity .5s; }
+        .playing-field .lines-for-letters-wrapper div span.fadeIn {
+          opacity: 1; }
+  .playing-field .guesses-remaining-wrapper {
+    margin-bottom: 1em; }
   .playing-field button {
     font-size: 1.2em;
     position: absolute;
