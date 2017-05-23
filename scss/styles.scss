@@ -110,6 +110,11 @@ h3 {
         color: $color-white;
         transition: all .17s;
 
+        &.disabled {
+          opacity: .2;
+          pointer-events: none;
+        }
+
         &:nth-child(even):hover {
           transform: rotate(7deg);
         }
@@ -145,7 +150,7 @@ h3 {
   		span {
   			font-size: 1.6em;
 				text-transform: uppercase;
-				opacity: 1;
+				opacity: 0.2;
 				transition: opacity .5s;
 
 				&.fadeIn {

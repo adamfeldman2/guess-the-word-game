@@ -40,7 +40,7 @@ var categories = {
   }
 };
 
-// sets selectedCategory and brings in the playing field 
+// sets selectedCategory and brings in the playing field
 function chooseCategory() {
   // loop over category buttons add event listeners
   categoryButtons.forEach(function (button) {
@@ -104,26 +104,40 @@ function useRandomWord() {
 // build the markup for the letter spaces using randomWord variable
 function buildWordLines() {
   // build HTML for word
-  var wordArr = randomWord.split(' ') || useRandomWord.split('');
-  console.log(wordArr);
+  var wordMarkup = randomWord.split('').reduce(function (markup, letter) {
+    // add empty div as markup if empty string
+    return letter === ' ' ? markup + '<div></div>' : markup + ('<div><span>' + letter + '</span></div>');
+  }, '');
 
-  if (wordArr.length !== 1) {} else {}
+  // add word HTML to .lines-for-letters-wrapper
+  linesForLettersWrapper.innerHTML = wordMarkup;
 
-  // const wordMarkup = randomWord.split('').reduce((markup, letter) => {
-  // 	// add empty div as markup if empty string
-  // 	return letter === ' ' ? markup + `<div></div>` : markup + `<div><span>${letter}</span></div>`; 
-  // }, '');
-
-  // // add word HTML to .lines-for-letters-wrapper
-  // linesForLettersWrapper.innerHTML = wordMarkup;
-
-  // numberOfLetters() // calls numberOfLetters()
+  numberOfLetters(); // calls numberOfLetters()
 }
 
 // check how many letters the word is
-// function numberOfLetters() {
-// 	const numOfLetters = document.querySelectorAll('.lines-for-letters-wrapper span').length;
-// 	console.log(numOfLetters);
-// }
+function numberOfLetters() {
+  numOfLetters = document.querySelectorAll('.lines-for-letters-wrapper span').length;
+
+  clickLetters(); // calls clickLetters()
+}
+
+function updateGuessesRemaining(number) {
+  guessesRemainingWrapper.children[1].innerHTML = number;
+}
+
+// on click of letters
+function clickLetters() {
+  letterButtons.forEach(function (letter) {
+    letter.addEventListener('click', function () {
+      // decrement one from guessesRemaining and run updateGuessesRemaining()
+      guessesRemaining -= 1;
+      updateGuessesRemaining(guessesRemaining);
+
+      // add .disabled to clicked letter
+      this.classList.add('disabled');
+    });
+  });
+}
 
 chooseCategory();

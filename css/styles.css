@@ -76,6 +76,9 @@ h3 {
         background-color: #F16B6F;
         color: #FFF;
         transition: all .17s; }
+        .playing-field .letters-wrapper-outer .letters-wrapper-inner span.disabled {
+          opacity: .2;
+          pointer-events: none; }
         .playing-field .letters-wrapper-outer .letters-wrapper-inner span:nth-child(even):hover {
           transform: rotate(7deg); }
         .playing-field .letters-wrapper-outer .letters-wrapper-inner span:nth-child(odd):hover {
@@ -100,7 +103,7 @@ h3 {
       .playing-field .lines-for-letters-wrapper div span {
         font-size: 1.6em;
         text-transform: uppercase;
-        opacity: 1;
+        opacity: 0.2;
         transition: opacity .5s; }
         .playing-field .lines-for-letters-wrapper div span.fadeIn {
           opacity: 1; }
