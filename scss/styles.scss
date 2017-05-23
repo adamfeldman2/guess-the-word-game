@@ -81,7 +81,13 @@ h3 {
 }
 
 .playing-field {
-  display: block;
+  display: none;
+  opacity: 0;
+  transition: opacity .5s;
+
+  &.fadeIn {
+  	opacity: 1;
+  }
 
   .guesses-remaining-wrapper {
     margin-bottom: 1em;

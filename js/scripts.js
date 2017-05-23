@@ -2,6 +2,7 @@
 
 // global variables
 var categoryWrapper = document.querySelector('.category-wrapper');
+var playingField = document.querySelector('.playing-field');
 var categoryButtons = document.querySelectorAll('.category-wrapper li');
 var guessesRemainingWrapper = document.querySelector('.guesses-remaining-wrapper');
 var selectedCategoryWrapper = document.querySelector('.selected-category-wrapper');
@@ -10,6 +11,7 @@ var letterButtons = document.querySelectorAll('.letters-wrapper-inner span');
 var selectedCategory = void 0;
 var selectedCategoryTitle = void 0;
 var selectedCategoryWords = void 0;
+var randomWord = void 0;
 
 // categories
 var categories = {
@@ -35,29 +37,47 @@ var categories = {
   }
 };
 
+// sets selectedCategory and brings in the playing field 
 function chooseCategory() {
   // loop over category buttons add event listeners
   categoryButtons.forEach(function (button) {
     button.addEventListener('click', function (e) {
       // update value of selectedCategory
       selectedCategory = e.target.attributes[0].nodeValue;
+
+      // fade .category-wrapper out
       categoryWrapper.classList.add('fadeOut'); // add class of .fadeOut
       setTimeout(function () {
         // add display: none after 500ms
         categoryWrapper.style.display = 'none';
       }, 500);
+
+      // fade .playing-field in
+      setTimeout(function () {
+        // add display: block after 500ms
+        playingField.style.display = 'block';
+        setTimeout(function () {
+          playingField.classList.add('fadeIn'); // add class of .fadeIn
+        }, 500);
+      }, 500);
+
       useCategoryTitle(); // calls useCategoryTitle()
+      useRandomWord(); // calls useRandomWord()
     });
   });
 }
 
+// displays the selectedCategoryTitle on the page
 function useCategoryTitle() {
   selectedCategoryTitle = categories[selectedCategory].title;
   selectedCategoryWrapper.children[1].innerText = selectedCategoryTitle;
 }
 
-// function pickWord() {
-//   console.log(categories[selectedCategory]);
-// }
+function useRandomWord() {
+  selectedCategoryWords = categories[selectedCategory].words;
+  // generate random number from 0 to number of indexes in array
+  var randomNum = Math.floor(Math.random() * selectedCategoryWords.length);
+  randomWord = selectedCategoryWords[randomNum];
+}
 
 chooseCategory();
