@@ -13,6 +13,8 @@ let selectedCategoryTitle;
 let selectedCategoryWords;
 let randomWord;
 let numOfLetters;
+let lettersGuessedCorrectly = 0;
+let letterValue;
 
 // categories
 const categories = {
@@ -118,21 +120,44 @@ function numberOfLetters() {
   clickLetters() // calls clickLetters()
 }
 
-function updateGuessesRemaining(number) {
-  guessesRemainingWrapper.children[1].innerHTML = number;
-}
-
 // on click of letters
 function clickLetters() {
+  const wordArr = randomWord.toUpperCase().split('');
+
   letterButtons.forEach((letter) => {
     letter.addEventListener('click', function() {
-      // decrement one from guessesRemaining and run updateGuessesRemaining()
-      guessesRemaining -= 1;
-      updateGuessesRemaining(guessesRemaining);
+      updateGuessesRemaining(letter, wordArr); //calls updateGuessesRemaining()
+      searchForLetters(letter, wordArr); // calls searchForLetters()
 
       // add .disabled to clicked letter
       this.classList.add('disabled');
     });
+  });
+}
+
+// if clicked letter is not in the word, decrement guesses remaining 
+function updateGuessesRemaining(letter, wordArr) {
+  console.log('numOfLetters: ', numOfLetters);
+  if(wordArr.indexOf(letter.innerText) === -1) {
+    guessesRemaining -= 1;
+    guessesRemainingWrapper.children[1].innerHTML = guessesRemaining;
+  }
+}
+
+// display letter if guessed correctly
+function searchForLetters(letter, wordArr) {
+  const hiddenLetters = document.querySelectorAll('.lines-for-letters-wrapper span');
+
+  wordArr.forEach((clickedLetter, i) => {
+    if(letter.innerText === clickedLetter) {
+      // update lettersGuessedCorreclty based on number of letters found in word
+      lettersGuessedCorrectly += 1;
+      Array.from(hiddenLetters).forEach((hiddenLetter) => {
+        if(clickedLetter === hiddenLetter.innerText) {
+          hiddenLetter.style.opacity = 1;
+        }
+      });
+    }
   });
 }
 
