@@ -1,3 +1,9 @@
+@keyframes win {
+  0% {
+    color: transparent; }
+  50% {
+    color: #3C3530; } }
+
 * {
   list-style: none;
   padding: 0;
@@ -58,12 +64,19 @@ h3 {
   transition: opacity .5s; }
   .playing-field.fadeIn {
     opacity: 1; }
+  .playing-field .game-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 3em 0 1em; }
+    .playing-field .game-info-wrapper .guesses-remaining-wrapper {
+      margin-bottom: 1em; }
   .playing-field .letters-wrapper-outer {
     display: flex;
-    justify-content: center;
-    margin-top: 3em; }
+    justify-content: center; }
     .playing-field .letters-wrapper-outer .letters-wrapper-inner {
-      display: flex; }
+      display: flex;
+      position: relative;
+      left: 1.6em; }
       .playing-field .letters-wrapper-outer .letters-wrapper-inner span {
         font-size: 1em;
         margin: .5em;
@@ -86,7 +99,7 @@ h3 {
   .playing-field .lines-for-letters-wrapper {
     display: flex;
     justify-content: center;
-    margin: 2em 0 1em; }
+    margin: 2em 0; }
     .playing-field .lines-for-letters-wrapper div {
       display: inline-flex;
       border-bottom: 1px solid #3C3530;
@@ -103,14 +116,22 @@ h3 {
       .playing-field .lines-for-letters-wrapper div span {
         font-size: 1.6em;
         text-transform: uppercase;
-        opacity: 0.2;
+        opacity: 0;
         transition: opacity .5s; }
         .playing-field .lines-for-letters-wrapper div span.fadeIn {
           opacity: 1; }
-  .playing-field .guesses-remaining-wrapper {
-    margin-bottom: 1em; }
+  .playing-field .win-or-lose-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4em; }
+    .playing-field .win-or-lose-wrapper span {
+      font-size: 2em;
+      text-transform: uppercase;
+      display: none; }
+      .playing-field .win-or-lose-wrapper span:first-of-type {
+        animation: win 1.2s infinite; }
   .playing-field button {
-    font-size: 1.2em;
+    font-size: 1em;
     position: absolute;
     right: 50%;
     bottom: 0;
@@ -121,4 +142,5 @@ h3 {
     border: 0;
     padding: .6em 2em;
     cursor: pointer;
-    outline: 0; }
+    outline: 0;
+    margin-bottom: 3em; }

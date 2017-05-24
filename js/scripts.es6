@@ -6,6 +6,7 @@ const guessesRemainingWrapper = document.querySelector('.guesses-remaining-wrapp
 const selectedCategoryWrapper = document.querySelector('.selected-category-wrapper');
 const letterButtons = document.querySelectorAll('.letters-wrapper-inner span');
 const linesForLettersWrapper = document.querySelector('.lines-for-letters-wrapper');
+const winOrLose = document.querySelector('.win-or-lose-wrapper');
 
 let guessesRemaining = 8;
 let selectedCategory;
@@ -15,6 +16,10 @@ let randomWord;
 let numOfLetters;
 let lettersGuessedCorrectly = 0;
 let letterValue;
+
+document.querySelector('button').addEventListener('click', function() {
+  window.location.reload();
+}); 
 
 // categories
 const categories = {
@@ -93,8 +98,7 @@ function useRandomWord() {
 	selectedCategoryWords = categories[selectedCategory].words;
 	// generate random number from 0 to number of indexes in array
 	const randomNum = Math.floor(Math.random() * selectedCategoryWords.length);
-	// randomWord = selectedCategoryWords[randomNum];
-	randomWord = 'Milky Way';
+	randomWord = selectedCategoryWords[randomNum];
 
 	buildWordLines(); // calls buildWordLines()
 }
@@ -137,7 +141,6 @@ function clickLetters() {
 
 // if clicked letter is not in the word, decrement guesses remaining 
 function updateGuessesRemaining(letter, wordArr) {
-  console.log('numOfLetters: ', numOfLetters);
   if(wordArr.indexOf(letter.innerText) === -1) {
     guessesRemaining -= 1;
     guessesRemainingWrapper.children[1].innerHTML = guessesRemaining;
@@ -158,6 +161,38 @@ function searchForLetters(letter, wordArr) {
         }
       });
     }
+  });
+  winOrLoseGame(); // calls winOrLoseGame()
+}
+
+function winOrLoseGame() {
+  // if user wins
+  if(lettersGuessedCorrectly === numOfLetters) {
+    disableAllLetters(); // calls disableAllLetters()
+    setTimeout(function() {
+      winOrLose.children[0].style.display = 'block';
+    }, 500);
+  }
+
+  // if user loses
+  if(guessesRemaining === 0) {
+    disableAllLetters(); // calls disableAllLetters()
+    displayWord(); // calls displayWord()
+    winOrLose.children[1].style.display = 'block';
+  }
+}
+
+function disableAllLetters() {
+  letterButtons.forEach((letter) => {
+      letter.classList.add('disabled');
+    });
+}
+
+function displayWord() {
+  const hiddenLetters = document.querySelectorAll('.lines-for-letters-wrapper span');
+  
+  Array.from(hiddenLetters).forEach((letter) => {
+    letter.style.opacity = 1;
   });
 }
 

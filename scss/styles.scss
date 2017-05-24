@@ -9,6 +9,12 @@ $color-pink: #F16B6F;
 $font-weight-light: 300;
 $font-weight-bold: 500;
 
+// animations //
+@keyframes win {
+  0% { color: transparent; }
+  50% { color: $color-black; }
+}
+
 
 * {
   list-style: none;
@@ -86,16 +92,27 @@ h3 {
   transition: opacity .5s;
 
   &.fadeIn {
-  	opacity: 1;
+    opacity: 1;
+  }
+
+  .game-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 3em 0 1em;
+
+    .guesses-remaining-wrapper {
+      margin-bottom: 1em;
+    }
   }
 
   .letters-wrapper-outer {
     display: flex;
     justify-content: center;
-    margin-top: 3em;
 
     .letters-wrapper-inner {
       display: flex;
+      position: relative;
+      left: 1.6em;
 
       span {
         font-size: 1em;
@@ -129,7 +146,7 @@ h3 {
   .lines-for-letters-wrapper {
   	display: flex;
   	justify-content: center;
-  	margin: 2em 0 1em;
+  	margin: 2em 0;
 
   	div {
   		display: inline-flex;
@@ -150,7 +167,7 @@ h3 {
   		span {
   			font-size: 1.6em;
 				text-transform: uppercase;
-				opacity: 0.2;
+				opacity: 0;
 				transition: opacity .5s;
 
 				&.fadeIn {
@@ -160,12 +177,24 @@ h3 {
   	}
   }
 
-  .guesses-remaining-wrapper {
-    margin-bottom: 1em;
+  .win-or-lose-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4em;
+    
+    span {
+      font-size: 2em;
+      text-transform: uppercase;
+      display: none;
+
+      &:first-of-type {
+        animation: win 1.2s infinite;
+      }
+    }  
   }
 
   button {
-    font-size: 1.2em;
+    font-size: 1em;
     position: absolute;
     right: 50%;
     bottom: 0;
@@ -177,5 +206,6 @@ h3 {
     padding: .6em 2em;
     cursor: pointer;
     outline: 0;
+    margin-bottom: 3em;
   }
 }
