@@ -19,29 +19,29 @@ let letterValue;
 
 document.querySelector('button').addEventListener('click', function() {
   window.location.reload();
-}); 
+});
 
 // categories
 const categories = {
   capitalCities: {
     title: 'Capital Cities',
-    words: ['Minsk', 'Havana', 'Santo Domingo', 'Addis Ababa', 'Helsinki', 'Budapest']
+    words: ['Minsk', 'Havana', 'Santo Domingo', 'Addis Ababa', 'Helsinki', 'Budapest', 'Tel Aviv', 'Wellington', 'Quito', 'Pretoria', 'Port au Prince', 'New Delhi', 'Lisbon', 'Jakarta', 'Copenhagen', 'Buenos Aires', 'Belfast', 'Tripoli', 'Baghdad', 'Brussels']
   },
-  astronomy: {
-    title: 'Astronomy',
-    words: ['Neptune', 'Constellation', 'Exosphere', 'Milky Way', 'Supernova']
+  musicalInstruments: {
+    title: 'Musical Instruments',
+    words: ['Vibraphone', 'Steelpan', 'Xylophone', 'Glockenspiel', 'Triangle', 'Saxophone', 'Harmonica', 'Bagpipe', 'Clarinet', 'Piccolo', 'Trombone', 'Ukelele', 'Mandolin', 'Cymbal', 'Tambourine', 'Turntable', 'Synthesizer', 'Bassoon', 'French Horn', 'Banjo']
   },
   languages: {
     title: 'Languages',
-    words: ['Vietnamese', 'Hebrew', 'Portuguese', 'Punjabi', 'Sundanese', 'Tagalog', 'Romanian']
+    words: ['Vietnamese', 'Hebrew', 'Portuguese', 'Punjabi', 'Sudanese', 'Tagalog', 'Romanian', 'Mandarin', 'Hindi', 'Tamil', 'Hungarian', 'Czech', 'Swedish', 'Belarusian', 'Arabic', 'Bengali', 'Urdu', 'Turkish', 'Persian', 'Ukrainian']
   },
   greenThings: {
     title: 'Green Things',
-    words: ['Zucchini', 'Chrysalis', 'Iguana', 'Pistachio', 'Asparagus']
+    words: ['Zucchini', 'Chrysalis', 'Iguana', 'Pistachio', 'Asparagus', 'Alligator', 'Cactus', 'Broccoli', 'Leprechaun', 'Turtle', 'Parsley', 'Pepper', 'Emerald', 'Avocado', 'Guacamole', 'Godzilla', 'Spinach', 'Shrek', 'Boston Celtics', 'Peter Pan']
   },
   dogBreeds: {
     title: 'Dog Breeds',
-    words: ['Border Terrier', 'Rottweiler', 'Dalmatian', 'German Shepherd', 'Shih Tzu']
+    words: ['Border Terrier', 'Rottweiler', 'Dalmatian', 'German Shepherd', 'Shih Tzu', 'Husky', 'Beagle', 'Chihuahua', 'Great Dane', 'Maltese', 'Pomeranian', 'Greyhound', 'Golden Retriever', 'Border Collie', 'Pit Bull', 'Bloodhound', 'Sheepdog', 'Cocker Spaniel', 'Schnauzer', 'Yorkie']
   }
 }
 
@@ -139,7 +139,7 @@ function clickLetters() {
   });
 }
 
-// if clicked letter is not in the word, decrement guesses remaining 
+// if clicked letter is not in the word, decrement guesses remaining
 function updateGuessesRemaining(letter, wordArr) {
   if(wordArr.indexOf(letter.innerText) === -1) {
     guessesRemaining -= 1;
@@ -171,7 +171,7 @@ function winOrLoseGame() {
     disableAllLetters(); // calls disableAllLetters()
     setTimeout(function() {
       winOrLose.children[0].style.display = 'block';
-    }, 500);
+    }, 250);
   }
 
   // if user loses
@@ -182,18 +182,21 @@ function winOrLoseGame() {
   }
 }
 
+// disable all the letters after game ends
 function disableAllLetters() {
   letterButtons.forEach((letter) => {
       letter.classList.add('disabled');
     });
 }
 
+// display the entire word if user loses
 function displayWord() {
   const hiddenLetters = document.querySelectorAll('.lines-for-letters-wrapper span');
-  
+
   Array.from(hiddenLetters).forEach((letter) => {
     letter.style.opacity = 1;
   });
 }
 
+// calls the first function which gets the app started
 chooseCategory();

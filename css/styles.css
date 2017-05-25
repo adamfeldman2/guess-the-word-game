@@ -1,8 +1,8 @@
 @keyframes win {
   0% {
-    color: transparent; }
-  50% {
-    color: #3C3530; } }
+    color: #3C3530; }
+  20% {
+    color: transparent; } }
 
 * {
   list-style: none;
@@ -65,11 +65,22 @@ h3 {
   .playing-field.fadeIn {
     opacity: 1; }
   .playing-field .game-info-wrapper {
+    font-size: 1.5em;
     display: flex;
     justify-content: space-between;
     margin: 3em 0 1em; }
     .playing-field .game-info-wrapper .guesses-remaining-wrapper {
       margin-bottom: 1em; }
+      .playing-field .game-info-wrapper .guesses-remaining-wrapper span:last-of-type {
+        font-size: 1.2em;
+        position: relative;
+        top: .05em;
+        left: .05em; }
+    .playing-field .game-info-wrapper .selected-category-wrapper span:last-of-type {
+      font-size: 1.2em;
+      text-transform: uppercase;
+      position: relative;
+      left: .05em; }
   .playing-field .letters-wrapper-outer {
     display: flex;
     justify-content: center; }
@@ -129,7 +140,7 @@ h3 {
       text-transform: uppercase;
       display: none; }
       .playing-field .win-or-lose-wrapper span:first-of-type {
-        animation: win 1.2s infinite; }
+        animation: win .9s infinite; }
   .playing-field button {
     font-size: 1em;
     position: absolute;
@@ -144,3 +155,5 @@ h3 {
     cursor: pointer;
     outline: 0;
     margin-bottom: 3em; }
+    .playing-field button:hover {
+      background-color: #f27679; }
