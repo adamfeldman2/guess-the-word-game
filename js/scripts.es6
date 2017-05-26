@@ -163,6 +163,7 @@ function searchForLetters(letter, wordArr) {
     }
   });
   winOrLoseGame(); // calls winOrLoseGame()
+  warningGuessesRemaining(); // calls warningGuessesRemaining()
 }
 
 function winOrLoseGame() {
@@ -196,6 +197,18 @@ function displayWord() {
   Array.from(hiddenLetters).forEach((letter) => {
     letter.style.opacity = 1;
   });
+}
+
+function warningGuessesRemaining() {
+  const guessesRemainingClassList = guessesRemainingWrapper.children[1].classList;
+  if(guessesRemaining <= 3) {
+    guessesRemainingClassList.add('warning');
+  }
+
+  if(guessesRemaining === 0) {
+    guessesRemainingClassList.remove('warning');
+  }
+  console.log('guessesRemaining: ', guessesRemaining);
 }
 
 // calls the first function which gets the app started
