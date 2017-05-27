@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var babel = require('gulp-babel');
 
+// sass task
 gulp.task('sass', function() {
   return gulp.src('scss/**/*.scss')
     .pipe(sass())
@@ -12,6 +13,7 @@ gulp.task('sass', function() {
     }))
 });
 
+// browserSync task
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
@@ -20,6 +22,7 @@ gulp.task('browserSync', function() {
   })
 })
 
+// babel
 gulp.task('scripts', function() {
   gulp.src("js/*.es6")
     .pipe(babel({
@@ -28,6 +31,7 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest("js"));
 });
 
+// watcher
 gulp.task('watch', ['browserSync', 'sass', 'scripts'], function (){
   gulp.watch('*.html', browserSync.reload);
   gulp.watch('scss/**/*.scss', ['sass']);

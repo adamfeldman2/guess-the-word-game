@@ -1,6 +1,6 @@
 'use strict';
 
-// global variables
+// global constant variables
 var difficultyWrapper = document.querySelector('.difficulty-wrapper');
 var categoryWrapper = document.querySelector('.category-wrapper');
 var playingField = document.querySelector('.playing-field');
@@ -12,6 +12,7 @@ var letterButtons = document.querySelectorAll('.letters-wrapper-inner span');
 var linesForLettersWrapper = document.querySelector('.lines-for-letters-wrapper');
 var winOrLose = document.querySelector('.win-or-lose-wrapper');
 
+// global update-able variables
 var selectedDifficulty = void 0;
 var guessesRemaining = 8;
 var selectedCategory = void 0;
@@ -22,6 +23,7 @@ var numOfLetters = void 0;
 var lettersGuessedCorrectly = 0;
 var letterValue = void 0;
 
+// onClick of "play again" button, reload the game
 document.querySelector('button').addEventListener('click', function () {
   window.location.reload();
 });
@@ -176,8 +178,9 @@ function numberOfLetters() {
 
 // on click of letters
 function clickLetters() {
-  var wordArr = randomWord.toUpperCase().split('');
+  var wordArr = randomWord.toUpperCase().split(''); // build array by spliting each letter of randomWord
 
+  // loop through all letterButtons
   letterButtons.forEach(function (letter) {
     letter.addEventListener('click', function () {
       updateGuessesRemaining(letter, wordArr); //calls updateGuessesRemaining()
@@ -193,7 +196,7 @@ function clickLetters() {
 function updateGuessesRemaining(letter, wordArr) {
   if (wordArr.indexOf(letter.innerText) === -1) {
     guessesRemaining -= 1;
-    guessesRemainingWrapper.children[1].innerHTML = guessesRemaining;
+    guessesRemainingWrapper.children[1].innerHTML = guessesRemaining; // display updated guessesRemaining on page
   }
 }
 
@@ -201,6 +204,7 @@ function updateGuessesRemaining(letter, wordArr) {
 function searchForLetters(letter, wordArr) {
   var hiddenLetters = document.querySelectorAll('.lines-for-letters-wrapper span');
 
+  // loop through the wordArr
   wordArr.forEach(function (clickedLetter, i) {
     if (letter.innerText === clickedLetter) {
       // update lettersGuessedCorreclty based on number of letters found in word
@@ -216,12 +220,13 @@ function searchForLetters(letter, wordArr) {
   warningGuessesRemaining(); // calls warningGuessesRemaining()
 }
 
+// either display winning prompt or losing prompt
 function winOrLoseGame() {
   // if user wins
   if (lettersGuessedCorrectly === numOfLetters) {
     disableAllLetters(); // calls disableAllLetters()
     setTimeout(function () {
-      winOrLose.children[0].style.display = 'block';
+      winOrLose.children[0].style.display = 'block'; // adds display: block to "YOU WIN"
     }, 250);
   }
 
@@ -229,12 +234,13 @@ function winOrLoseGame() {
   if (guessesRemaining === 0) {
     disableAllLetters(); // calls disableAllLetters()
     displayWord(); // calls displayWord()
-    winOrLose.children[1].style.display = 'block';
+    winOrLose.children[1].style.display = 'block'; // adds display: block to "YOU LOSE"
   }
 }
 
 // disable all the letters after game ends
 function disableAllLetters() {
+  // loop through all letter buttons and add .disabled
   letterButtons.forEach(function (letter) {
     letter.classList.add('disabled');
   });
@@ -244,11 +250,13 @@ function disableAllLetters() {
 function displayWord() {
   var hiddenLetters = document.querySelectorAll('.lines-for-letters-wrapper span');
 
+  // turn hiddenLetters nodeList into an actual array
   Array.from(hiddenLetters).forEach(function (letter) {
     letter.style.opacity = 1;
   });
 }
 
+// adds the .warning class to the guessesRemaining number to warn user that lives are almost up
 function warningGuessesRemaining() {
   var guessesRemainingClassList = guessesRemainingWrapper.children[1].classList;
   if (guessesRemaining <= 3) {
