@@ -29,17 +29,28 @@ body {
   padding: 4em 4%;
   position: relative; }
   .wrapper h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     text-align: center; }
   .wrapper h3 {
-    font-size: .85em;
+    font-size: .9em;
     text-align: center;
     font-weight: 300; }
+  .wrapper .author {
+    font-size: .8em;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin-top: .3em; }
+    .wrapper .author a {
+      color: #3C3530;
+      text-decoration: none; }
+      .wrapper .author a:hover {
+        text-decoration: underline; }
   .wrapper .difficulty-wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 4em;
+    padding-top: 3em;
     opacity: 1;
     transition: opacity .5s; }
     .wrapper .difficulty-wrapper.fadeOut {
@@ -68,7 +79,7 @@ body {
     display: none;
     align-items: center;
     flex-direction: column;
-    padding-top: 4em;
+    padding-top: 3em;
     opacity: 0;
     transition: opacity .5s; }
     .wrapper .category-wrapper.fadeIn {
