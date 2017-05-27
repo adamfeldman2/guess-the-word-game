@@ -35,13 +35,44 @@ body {
     font-size: .85em;
     text-align: center;
     font-weight: 300; }
-  .wrapper .category-wrapper {
+  .wrapper .difficulty-wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-top: 4em;
     opacity: 1;
     transition: opacity .5s; }
+    .wrapper .difficulty-wrapper.fadeOut {
+      opacity: 0; }
+    .wrapper .difficulty-wrapper div {
+      font-size: 1.5em; }
+    .wrapper .difficulty-wrapper ul {
+      display: flex;
+      justify-content: center;
+      margin-top: 1em; }
+      .wrapper .difficulty-wrapper ul li {
+        background-color: #F16B6F;
+        color: #FFF;
+        padding: .6em;
+        margin: .5em .5em;
+        text-align: center;
+        cursor: pointer;
+        transition: all .17s; }
+        .wrapper .difficulty-wrapper ul li span {
+          font-size: .75em;
+          letter-spacing: 1px;
+          pointer-events: none; }
+        .wrapper .difficulty-wrapper ul li:hover {
+          transform: scale(1.04); }
+  .wrapper .category-wrapper {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 4em;
+    opacity: 0;
+    transition: opacity .5s; }
+    .wrapper .category-wrapper.fadeIn {
+      opacity: 1; }
     .wrapper .category-wrapper.fadeOut {
       opacity: 0; }
     .wrapper .category-wrapper div {
@@ -78,7 +109,7 @@ body {
           font-size: 1.2em;
           position: absolute;
           top: -3px;
-          right: -25px; }
+          right: -31px; }
           .wrapper .playing-field .game-info-wrapper .guesses-remaining-wrapper span:last-of-type.warning {
             font-size: 1.5em;
             font-weight: 500;

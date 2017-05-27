@@ -1,8 +1,10 @@
 'use strict';
 
 // global variables
+var difficultyWrapper = document.querySelector('.difficulty-wrapper');
 var categoryWrapper = document.querySelector('.category-wrapper');
 var playingField = document.querySelector('.playing-field');
+var difficultyButtons = document.querySelectorAll('.difficulty-wrapper li');
 var categoryButtons = document.querySelectorAll('.category-wrapper li');
 var guessesRemainingWrapper = document.querySelector('.guesses-remaining-wrapper');
 var selectedCategoryWrapper = document.querySelector('.selected-category-wrapper');
@@ -10,6 +12,7 @@ var letterButtons = document.querySelectorAll('.letters-wrapper-inner span');
 var linesForLettersWrapper = document.querySelector('.lines-for-letters-wrapper');
 var winOrLose = document.querySelector('.win-or-lose-wrapper');
 
+var selectedDifficulty = void 0;
 var guessesRemaining = 8;
 var selectedCategory = void 0;
 var selectedCategoryTitle = void 0;
@@ -47,6 +50,50 @@ var categories = {
   }
 };
 
+//sets the game's difficulty
+function chooseDifficulty() {
+  // loop over difficulty buttons add event listeners
+  difficultyButtons.forEach(function (button) {
+    button.addEventListener('click', function (e) {
+      // update value of selectedDifficulty
+      selectedDifficulty = e.target.attributes[0].nodeValue;
+      // update guessesRemaining based on difficulty desired
+      if (selectedDifficulty === 'level-easy') {
+        guessesRemaining = 10;
+      } else if (selectedDifficulty === 'level-medium') {
+        guessesRemaining = 8;
+      } else {
+        guessesRemaining = 6;
+      }
+
+      fadeOutDifficultyWrapper(); // calls fadeOutDifficultyWrapper()
+      fadeInCategoryWrapper(); // calls fadeInCategoryWrapper()
+      setGuessesRemaining(); // calls setGuessesRemaining()
+      chooseCategory(); // calls chooseCategory()
+    });
+  });
+}
+
+// fade .difficulty-wrapper out
+function fadeOutDifficultyWrapper() {
+  difficultyWrapper.classList.add('fadeOut'); // add class of .fadeOut
+  setTimeout(function () {
+    // add display: none after 500ms
+    difficultyWrapper.style.display = 'none';
+  }, 500);
+}
+
+// fade .category-wrapper in
+function fadeInCategoryWrapper() {
+  setTimeout(function () {
+    // add display: flex after 500ms
+    categoryWrapper.style.display = 'flex';
+    setTimeout(function () {
+      categoryWrapper.classList.add('fadeIn'); // add class of .fadeIn
+    }, 500);
+  }, 500);
+}
+
 // sets selectedCategory and brings in the playing field
 function chooseCategory() {
   // loop over category buttons add event listeners
@@ -59,7 +106,6 @@ function chooseCategory() {
 
       fadeInPlayingField(); // calls fadeInPlayingField()
 
-      setGuessesRemaining(); // calls setGuessesRemaining()
       useCategoryTitle(); // calls useCategoryTitle()
       useRandomWord(); // calls useRandomWord()
     });
@@ -216,4 +262,4 @@ function warningGuessesRemaining() {
 }
 
 // calls the first function which gets the app started
-chooseCategory();
+chooseDifficulty();
