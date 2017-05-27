@@ -30,7 +30,7 @@ document.querySelector('button').addEventListener('click', function() {
 const categories = {
   capitalCities: {
     title: 'Capital Cities',
-    words: ['Minsk', 'Havana', 'Santo Domingo', 'Addis Ababa', 'Helsinki', 'Budapest', 'Tel Aviv', 'Wellington', 'Quito', 'Pretoria', 'Port au Prince', 'New Delhi', 'Lisbon', 'Jakarta', 'Copenhagen', 'Buenos Aires', 'Belfast', 'Tripoli', 'Baghdad', 'Brussels']
+    words: ['Minsk', 'Havana', 'Santo Domingo', 'Helsinki', 'Budapest', 'Tel Aviv', 'Wellington', 'Quito', 'Pretoria', 'New Delhi', 'Lisbon', 'Jakarta', 'Copenhagen', 'Buenos Aires', 'Belfast', 'Tripoli', 'Baghdad', 'Brussels', 'Bangkok', 'Beijing', 'Dublin', 'Kingston', 'Madrid', 'Prague', 'Santiago', 'Singapore', 'Amsterdam', 'Vatican City', 'Vienna']
   },
   musicalInstruments: {
     title: 'Musical Instruments',
@@ -38,7 +38,11 @@ const categories = {
   },
   languages: {
     title: 'Languages',
-    words: ['Vietnamese', 'Hebrew', 'Portuguese', 'Punjabi', 'Sudanese', 'Tagalog', 'Romanian', 'Mandarin', 'Hindi', 'Tamil', 'Hungarian', 'Czech', 'Swedish', 'Belarusian', 'Arabic', 'Bengali', 'Urdu', 'Turkish', 'Persian', 'Ukrainian']
+    words: ['Vietnamese', 'Hebrew', 'Portuguese', 'Punjabi', 'Sudanese', 'Tagalog', 'Romanian', 'Mandarin', 'Hindi', 'Tamil', 'Hungarian', 'Czech', 'Swedish', 'Belarusian', 'Arabic', 'Bengali', 'Urdu', 'Turkish', 'Persian', 'Ukrainian', 'Italian', 'Japanese', 'Polish']
+  },
+  movieTitles: {
+    title: 'Movie Titles',
+    words: ['Avatar', 'Jurassic Park', 'Harry Potter', 'Toy Story', 'Iron Man', 'James Bond', 'Lion King', 'Finding Nemo', 'Spider Man', 'Jungle Book', 'Hunger Games', 'Star Wars', 'The Exorcist', 'The Godfather', 'Goodfellas', 'The Shining', 'Pulp Fiction', 'Gladiator', 'Citizen Kane', 'Mary Poppins', 'Casablanca', 'Shawshank Redemption', 'Forrest Gump', 'Rain Man', '']
   },
   greenThings: {
     title: 'Green Things',
@@ -59,11 +63,11 @@ function chooseDifficulty() {
       selectedDifficulty = e.target.attributes[0].nodeValue;
       // update guessesRemaining based on difficulty desired
       if(selectedDifficulty === 'level-easy') {
-        guessesRemaining = 10;
+        guessesRemaining = 9;
       } else if(selectedDifficulty === 'level-medium') {
-        guessesRemaining = 8;
+        guessesRemaining = 7;
       } else {
-        guessesRemaining = 6;
+        guessesRemaining = 5;
       }
 
       fadeOutDifficultyWrapper(); // calls fadeOutDifficultyWrapper()
