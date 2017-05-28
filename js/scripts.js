@@ -50,6 +50,10 @@ var categories = {
     title: 'Green Things',
     words: ['Zucchini', 'Chrysalis', 'Iguana', 'Pistachio', 'Asparagus', 'Alligator', 'Cactus', 'Broccoli', 'Leprechaun', 'Turtle', 'Parsley', 'Pepper', 'Emerald', 'Avocado', 'Guacamole', 'Godzilla', 'Spinach', 'Shrek', 'Boston Celtics', 'Peter Pan']
   },
+  brandNames: {
+    title: 'Brand Names',
+    words: ['Microsoft', 'Disney', 'Samsung', 'Budweiser', 'Gillette', 'Home Depot', 'Starbucks', 'Mastercard', 'Nestle', 'Chevrolet', 'Colgate', 'Adidas', 'Hershey', 'Mercedes Benz', 'Volkswagen', 'Porsche', 'Scotiabank', 'Panasonic', 'Tim Hortons', 'Gucci', 'Toshiba', 'Red Bull', 'Ferrari', 'Heineken', 'Burger King', 'Nintendo', 'Gatorade', 'Burberry', 'Tesla']
+  },
   dogBreeds: {
     title: 'Dog Breeds',
     words: ['Border Terrier', 'Rottweiler', 'Dalmatian', 'German Shepherd', 'Shih Tzu', 'Husky', 'Beagle', 'Chihuahua', 'Great Dane', 'Maltese', 'Pomeranian', 'Greyhound', 'Golden Retriever', 'Border Collie', 'Pit Bull', 'Bloodhound', 'Sheepdog', 'Cocker Spaniel', 'Schnauzer', 'Yorkie']
@@ -270,7 +274,6 @@ function warningGuessesRemaining() {
   if (guessesRemaining === 0) {
     guessesRemainingClassList.remove('warning');
   }
-  console.log('guessesRemaining: ', guessesRemaining);
 }
 
 // calls the first function which gets the app started
