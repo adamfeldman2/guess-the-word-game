@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<!-- Google Analytics -->
 	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-90374741-3', 'auto');
-  ga('send', 'pageview');
+		ga('create', 'UA-90374741-3', 'auto');
+		ga('send', 'pageview');
 
 	</script>
 	<!-- Google Analytics End -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="description" content="Hangman-style word guessing game">
 	<meta name="keywords" content="hangman, game, guess, word, javascript">
-  <meta name="author" content="Adam Feldman">
+	<meta name="author" content="Adam Feldman">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
 	<title>Guess The Word</title>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 	<div class="wrapper">
 		<header>
 			<h1>Guess The Word</h1>
 			<h3>// Built with HTML, CSS, and Vanilla JS</h3>
-			<span class="author">By: <a href="http://adamfeldman.io" target="_blank">Adam Feldman</a></span>
+			<span class="author">By:
+				<a href="https://adamcodes.ca" target="_blank">Adam Feldman</a>
+			</span>
 		</header>
 		<main>
 
@@ -37,9 +43,15 @@
 			<div class="difficulty-wrapper">
 				<div>Difficulty level:</div>
 				<ul>
-					<li value="level-easy">Easy <span>(9 Lives)</span></li>
-					<li value="level-medium">Medium <span>(7 Lives)</span></li>
-					<li value="level-hard">Hard <span>(5 Lives)</span></li>
+					<li value="level-easy">Easy
+						<span>(9 Lives)</span>
+					</li>
+					<li value="level-medium">Medium
+						<span>(7 Lives)</span>
+					</li>
+					<li value="level-hard">Hard
+						<span>(5 Lives)</span>
+					</li>
 				</ul>
 			</div>
 
@@ -60,23 +72,50 @@
 			<!-- playing field -->
 			<div class="playing-field">
 
-			<!-- game info -->
+				<!-- game info -->
 				<div class="game-info-wrapper">
 					<!-- guesses remaining -->
 					<div class="guesses-remaining-wrapper">
-						<span>Guesses Remaining: </span><span></span>
+						<span>Guesses Remaining: </span>
+						<span></span>
 					</div>
 
 					<!-- selected category -->
 					<div class="selected-category-wrapper">
-						<span>Category: </span><span></span>
+						<span>Category: </span>
+						<span></span>
 					</div>
 				</div>
 
 				<!-- letters -->
 				<div class="letters-wrapper-outer">
 					<div class="letters-wrapper-inner">
-						<span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+						<span>A</span>
+						<span>B</span>
+						<span>C</span>
+						<span>D</span>
+						<span>E</span>
+						<span>F</span>
+						<span>G</span>
+						<span>H</span>
+						<span>I</span>
+						<span>J</span>
+						<span>K</span>
+						<span>L</span>
+						<span>M</span>
+						<span>N</span>
+						<span>O</span>
+						<span>P</span>
+						<span>Q</span>
+						<span>R</span>
+						<span>S</span>
+						<span>T</span>
+						<span>U</span>
+						<span>V</span>
+						<span>W</span>
+						<span>X</span>
+						<span>Y</span>
+						<span>Z</span>
 					</div>
 				</div>
 
@@ -92,9 +131,12 @@
 				<!-- play again -->
 				<button>Play Again</button>
 
-			</div> <!-- /.playing-filed -->
+			</div>
+			<!-- /.playing-filed -->
 		</main>
-	</div> <!-- /.wrapper -->
+	</div>
+	<!-- /.wrapper -->
 	<script src="js/scripts.js"></script>
 </body>
+
 </html>
